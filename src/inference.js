@@ -3,7 +3,7 @@
 /*global BigInt64Array */
 
 import { loadTokenizer } from './bert_tokenizer.ts';
-import * as wasmFeatureDetect from 'wasm-feature-detect';
+/*import * as wasmFeatureDetect from 'wasm-feature-detect'; */
 
 //Setup onnxruntime 
 const ort = require('onnxruntime-web');
