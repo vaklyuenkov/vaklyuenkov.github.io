@@ -1,0 +1,77 @@
+Index: ci.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>name: Build and Deploy\non: [push]\npermissions:\n  contents: write\njobs:\n  build-and-deploy:\n    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout \uD83D\uDECE️\n        uses: actions/checkout@v3\n\n      - name: Install and Build \uD83D\uDD27 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.\n        run: |\n          npm ci\n          npm run build\n\n      - name: Deploy \uD83D\uDE80\n        uses: JamesIves/github-pages-deploy-action@v4\n        with:\n          folder: build # The folder the action should deploy.
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ci.yml b/ci.yml
+--- a/ci.yml	(revision 587f0d7410ed4843be81be6a54014e01801d2b70)
++++ b/ci.yml	(date 1667575245839)
+@@ -1,21 +1,27 @@
+-name: Build and Deploy
+-on: [push]
+-permissions:
+-  contents: write
++
++name: Deploy GH Pages
++
++on: push
++
+ jobs:
+   build-and-deploy:
+-    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+     runs-on: ubuntu-latest
++
+     steps:
+       - name: Checkout 🛎️
+-        uses: actions/checkout@v3
++        uses: actions/checkout@v2
++        with:
++          persist-credentials: false
+ 
+-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+-        run: |
+-          npm ci
+-          npm run build
++      - name: Install 🔧
++        run: npm install
++
++      - name: Build 🏗️
++        run: npm run build
+ 
+       - name: Deploy 🚀
+-        uses: JamesIves/github-pages-deploy-action@v4
++        uses: JamesIves/github-pages-deploy-action@releases/v3
+         with:
+-          folder: build # The folder the action should deploy.
+\ No newline at end of file
++          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
++          BRANCH: gh-pages
++          FOLDER: ./build
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"6cedf35b-281d-460a-997b-0ec1fe7709ad\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/modules.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/vaklyuenkov.github.io.iml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ci.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ci.yml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2H5ITLpmJeHZzvaWF9WkppRPglU\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"last_opened_file_path\": \"/home/w/Projects/my/mltemple/inference/vaklyuenkov.github.io\"\n  }\n}]]></component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"6cedf35b-281d-460a-997b-0ec1fe7709ad\" name=\"Changes\" comment=\"\" />\n      <created>1667568524636</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1667568524636</updated>\n    </task>\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 587f0d7410ed4843be81be6a54014e01801d2b70)
++++ b/.idea/workspace.xml	(date 1667575246479)
+@@ -2,13 +2,7 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="6cedf35b-281d-460a-997b-0ec1fe7709ad" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vaklyuenkov.github.io.iml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ci.yml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
