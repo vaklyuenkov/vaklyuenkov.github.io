@@ -9,8 +9,8 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
 class TextInputArea extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(Props) {
+    super(Props);
     this.state = {
       text: 'Enter text to classify emotion, model trained on English text.',
       data:columnNames,

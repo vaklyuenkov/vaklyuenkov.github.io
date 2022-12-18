@@ -112,7 +112,7 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.Props;
 
     return (
       <div className={classes.root}>
