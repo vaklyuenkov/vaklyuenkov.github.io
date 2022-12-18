@@ -52,8 +52,8 @@ class TextInputArea extends React.Component {
   render() {
     return (
       <div className="App">
-      <header className="App-header">   
-      <em>In-Browser Transformer Inference</em>
+      <body className="App-header">
+      <h4>In-Browser Transformer Inference</h4>
       <Chart  
         width={'400px'}
         height={'200px'}
@@ -61,8 +61,8 @@ class TextInputArea extends React.Component {
         data={this.state.data}
         options={{
           chartArea: { width: '40%'},
-          colors: ['purple'],
-          backgroundColor: '#282c34',
+          colors: ['Green'],
+          backgroundColor: '#444',
           legend: { 
             textStyle: {color: 'white', fontSize: 10},
             labels: {fontColor:'white'}
@@ -97,7 +97,7 @@ class TextInputArea extends React.Component {
        <div><font size="3">Inference Latency {this.state.latency} ms</font></div>
       <div><font size="3">GitHub Repo: <a href="https://github.com/jobergum/browser-ml-inference">browser-ml-inference</a></font></div>
       <div><font size="3">Model was trained on the <a href="https://ai.googleblog.com/2021/10/goemotions-dataset-for-fine-grained.html">GoEmotions</a> dataset.</font></div>
-      </header>
+      </body>
     </div>   
     );
   }

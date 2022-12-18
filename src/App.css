@@ -11,13 +11,13 @@
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
-    background-color: #343aeb;
+    background-color: #222;
     font-size: calc(10px + 2vmin);
-    color: #282c34;
+    color: #fff;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #444;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,3 +30,5 @@
 .App-link {
   color: #61dafb;
 }
+
+
