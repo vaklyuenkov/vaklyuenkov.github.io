@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 export const AppContext = React.createContext();
 
-const Props = () => {
+const MyComponent = props => {
   const [contentUrl, setContentUrl] = useState("/contents/About.md");
   return (
     <AppContext.Provider
@@ -10,9 +10,9 @@ const Props = () => {
         setContentUrl
       }}
     >
-      {Props.children}
+      {props.children}
     </AppContext.Provider>
   );
 };
 
-export default Props;
+export default MyComponent;

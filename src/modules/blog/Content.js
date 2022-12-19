@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import { AppContext } from "./provider";
 
-export default () => {
+const MyComponent = props => {
   const [content, setContent] = useState();
   const { contentUrl } = useContext(AppContext);
   useEffect(() => {
@@ -18,3 +18,5 @@ export default () => {
     </div>
   );
 };
+
+export default MyComponent;
