@@ -11,10 +11,17 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+/*
 import {
   MainListItems,
   IntegrationListItems
 } from "./menu";
+*/
+
+import {
+  MainListItems,
+} from "./menu";
+
 import Content from "./Content";
 
 const drawerWidth = 300;
@@ -170,9 +177,7 @@ class Dashboard extends React.Component {
             <MainListItems />
           </List>
           <Divider />
-          <List>
-            <IntegrationListItems />
-          </List>
+
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
@@ -186,3 +191,21 @@ class Dashboard extends React.Component {
 }
 
 export default withStyles(styles)(Dashboard);
+
+
+/*
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={this.handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            <MainListItems />
+          </List>
+          <Divider />
+          <List>
+            <IntegrationListItems />
+          </List>
+        </Drawer>
+*/

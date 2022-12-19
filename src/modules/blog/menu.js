@@ -29,7 +29,6 @@ function MainListItems() {
   );
 }
 
-
 function IntegrationListItems() {
   const { setContentUrl } = useContext(AppContext);
   function changeContentUrl(url) {
@@ -52,4 +51,5 @@ function IntegrationListItems() {
   );
 }
 
-export { MainListItems, IntegrationListItems };
+export { MainListItems };
+//export { MainListItems, IntegrationListItems };
