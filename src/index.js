@@ -4,10 +4,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import LinkComp from "./linkcomp";
 
-import TextInputArea from './App';
-import BlogPage from './modules';
+import TextInputArea from './modules/js_inference';
+import BlogPage from './modules/blog';
 
-import "./App.css";
 import './index.css';
 import './router.css'
 
