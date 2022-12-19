@@ -29,7 +29,7 @@ function MainListItems() {
   );
 }
 
-function IntegrationListItems() {
+/*function IntegrationListItems() {
   const { setContentUrl } = useContext(AppContext);
   function changeContentUrl(url) {
     setContentUrl(url);
@@ -49,7 +49,7 @@ function IntegrationListItems() {
       </ListItem>
     </div>
   );
-}
+}*/
 
 export { MainListItems };
 //export { MainListItems, IntegrationListItems };
