@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./styles.css";
 import Dashboard from "./Dashboard";
 import Provider from "./provider";

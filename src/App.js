@@ -61,7 +61,7 @@ class TextInputArea extends React.Component {
         data={this.state.data}
         options={{
           chartArea: { width: '40%'},
-          colors: ['Green'],
+          colors: ['White'],
           backgroundColor: '#444',
           legend: { 
             textStyle: {color: 'white', fontSize: 10},
