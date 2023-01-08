@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-//import ListSubheader from "@material-ui/core/ListSubheader";
+import ListSubheader from "@material-ui/core/ListSubheader";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-//import AssignmentIcon from "@material-ui/icons/Assignment";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 import { AppContext } from "./provider";
 
 function MainListItems() {
@@ -29,7 +29,7 @@ function MainListItems() {
   );
 }
 
-/*function IntegrationListItems() {
+function TransformerItems() {
   const { setContentUrl } = useContext(AppContext);
   function changeContentUrl(url) {
     setContentUrl(url);
@@ -39,17 +39,17 @@ function MainListItems() {
       <ListSubheader inset>Posts</ListSubheader>
       <ListItem button
         onClick={() => {
-          changeContentUrl("/contents/Transformers.md");
+          changeContentUrl("/contents/posts/transformers/SelfAttention.md");
         }}
       >
         <ListItemIcon>
           <AssignmentIcon />
         </ListItemIcon>
-        <ListItemText primary="Transformers" />
+        <ListItemText primary="Self Attention" />
       </ListItem>
     </div>
   );
-}*/
+}
 
-export { MainListItems };
-//export { MainListItems, IntegrationListItems };
+
+export { MainListItems, TransformerItems };
