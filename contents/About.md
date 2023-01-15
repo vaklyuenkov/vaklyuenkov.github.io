@@ -2,9 +2,9 @@
 
 ![Author](/contents/images/myphoto.gif)
 
-### I am a machine learning engineer.
-### My goal is to deliver machine learning to complex systems from problem definition to implementation in production.
-### I believe that artificial intelligence will change the world and I work to ensure that these are changes for the better.
+#### I am a machine learning engineer.
+#### My goal is to deliver machine learning to complex systems from problem definition to implementation in production.
+#### I believe that artificial intelligence will change the world and I work to ensure that these are changes for the better.
 
 [![OLOLO](/contents/images/mail.png)](mailto:vaklyuenkov@gmail.com)
 [![MAIL](/contents/images/telegram.png)](https://t.me/vaklyuenkov)
