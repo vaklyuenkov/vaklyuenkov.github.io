@@ -14,7 +14,8 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 import {
   MainListItems,
-  TransformerItems
+  TransformerItems,
+  SysDesignItems
 } from "./menu";
 
 import Content from "./Content";
@@ -174,6 +175,9 @@ class Dashboard extends React.Component {
           <Divider />
           <List>
             <TransformerItems />
+          </List>
+          <List>
+            <SysDesignItems />
           </List>
         </Drawer>
 

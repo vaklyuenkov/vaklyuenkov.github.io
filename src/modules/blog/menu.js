@@ -3,8 +3,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import AssignmentIcon from "@material-ui/icons/Assignment";
+import PersonIcon from "@material-ui/icons/Person";
+import GridOffIcon from "@material-ui/icons/GridOff";
+import SettingsIcon from "@material-ui/icons/Settings";
 import { AppContext } from "./provider";
 
 function MainListItems() {
@@ -21,7 +22,7 @@ function MainListItems() {
         }}
       >
         <ListItemIcon>
-          <DashboardIcon />
+          <PersonIcon />
         </ListItemIcon>
         <ListItemText primary="About" />
       </ListItem>
@@ -36,14 +37,14 @@ function TransformerItems() {
   }
   return (
     <div>
-      <ListSubheader inset>Posts</ListSubheader>
+      <ListSubheader inset>Transformers</ListSubheader>
       <ListItem button
         onClick={() => {
           changeContentUrl("/contents/posts/transformers/SelfAttention.md");
         }}
       >
         <ListItemIcon>
-          <AssignmentIcon />
+          <GridOffIcon />
         </ListItemIcon>
         <ListItemText primary="Self Attention" />
       </ListItem>
@@ -51,5 +52,26 @@ function TransformerItems() {
   );
 }
 
+function SysDesignItems() {
+  const { setContentUrl } = useContext(AppContext);
+  function changeContentUrl(url) {
+    setContentUrl(url);
+  }
+  return (
+    <div>
+      <ListSubheader inset>System design</ListSubheader>
+      <ListItem button
+        onClick={() => {
+          changeContentUrl("/contents/posts/sys_design/SystemDesignMain.md");
+        }}
+      >
+        <ListItemIcon>
+          <SettingsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Sys. dis. algorithm" />
+      </ListItem>
+    </div>
+  );
+}
 
-export { MainListItems, TransformerItems };
+export { MainListItems, TransformerItems, SysDesignItems };
