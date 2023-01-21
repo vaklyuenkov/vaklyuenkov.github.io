@@ -13,8 +13,8 @@ const MyComponent = props => {
       });
   }, [contentUrl]);
   return (
-    <div className="result-pane">
-      <ReactMarkdown className="result" children={content} />
+    <div className="markdown-body">
+      <ReactMarkdown children={content} />
     </div>
   );
 };

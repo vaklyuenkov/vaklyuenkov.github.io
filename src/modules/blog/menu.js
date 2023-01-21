@@ -62,16 +62,30 @@ function SysDesignItems() {
       <ListSubheader inset>System design</ListSubheader>
       <ListItem button
         onClick={() => {
-          changeContentUrl("/contents/posts/sys_design/SystemDesignMain.md");
+          changeContentUrl("/contents/posts/sys_design/sys_design/SystemDesignMain.md");
         }}
       >
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
-        <ListItemText primary="Sys. dis. algorithm" />
+        <ListItemText primary="Sys. des. algorithm" />
       </ListItem>
+
+      <ListItem button
+        onClick={() => {
+          changeContentUrl("/contents/posts/sys_design/mlops/MlOps.md");
+        }}>
+        <ListItemIcon>
+          <SettingsIcon />
+        </ListItemIcon>
+        <ListItemText primary="MlOps" />
+      </ListItem>
+
     </div>
   );
 }
+
+
+
 
 export { MainListItems, TransformerItems, SysDesignItems };
