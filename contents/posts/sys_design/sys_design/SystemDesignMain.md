@@ -2,7 +2,7 @@
 
 ![sys design](/contents/posts/sys_design/sys_design/factorio.gif)
 
-
+____________
 ### HLD (High Level Design)
 
 1. Lock down the requirements
