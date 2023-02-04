@@ -2,7 +2,7 @@
 
 ![self attention](/contents/posts/transformers/attention.gif)
 
-
+____________
 ### Links 
 * [The Illustrated Attention](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
 * [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)

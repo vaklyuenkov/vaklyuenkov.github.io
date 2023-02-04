@@ -63,22 +63,32 @@ function SysDesignItems() {
       <ListItem button
         onClick={() => {
           changeContentUrl("/contents/posts/sys_design/sys_design/SystemDesignMain.md");
-        }}
-      >
-        <ListItemIcon>
-          <SettingsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Sys. des. algorithm" />
-      </ListItem>
-
-      <ListItem button
-        onClick={() => {
-          changeContentUrl("/contents/posts/sys_design/mlops/MlOps.md");
         }}>
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
-        <ListItemText primary="MlOps" />
+        <ListItemText primary="Sys. design" />
+      </ListItem>
+
+      <ListItem button
+        onClick={() => {
+          changeContentUrl("/contents/posts/sys_design/ml_sys_design/MlSysDesign.md");
+        }}>
+        <ListItemIcon>
+          <SettingsIcon />
+        </ListItemIcon>
+        <ListItemText primary="ML sys. design" />
+      </ListItem>
+
+
+        <ListItem button
+        onClick={() => {
+          changeContentUrl("/contents/posts/sys_design/mlops/MlOps_tools.md");
+        }}>
+        <ListItemIcon>
+          <SettingsIcon />
+        </ListItemIcon>
+        <ListItemText primary="MlOps tools" />
       </ListItem>
 
     </div>
