@@ -1,4 +1,4 @@
-# Learn Machine Learning
+# Teaching machines to learn
 
 ![Author](/contents/images/myphoto.gif)
 

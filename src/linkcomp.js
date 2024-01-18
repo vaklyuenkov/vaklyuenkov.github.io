@@ -9,6 +9,7 @@ const LinkComp = () => {
         {" "} Blog {" "}
       </Link>
       <Link to="/js_inference"> Demo </Link>
+    <Link to="/lifestats"> Life Stats </Link>
     </div>
     </div>
   );

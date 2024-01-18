@@ -1,2 +1,2 @@
-import TextInputArea from "./App";
-export default TextInputArea;
+import LifeStats from "./App";
+export default LifeStats;

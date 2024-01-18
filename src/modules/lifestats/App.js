@@ -1,131 +1,121 @@
-// GoogleSheetsReader.js
+// App.js
+import React, { useState, useEffect } from 'react';
+import { gapi } from 'gapi-script';
+import { Line } from "react-chartjs-2";
+import Chart from 'chart.js/auto';
+import {CategoryScale} from 'chart.js';
+import "./styles.css";
 
-const express = require('express');
-const { google } = require('googleapis');
-const ChartClass = require('./ChartClass');
+const LifeStats = () => {
+  const [weightSheetData, setWeightSheetData] = useState([]);
+  //const [sheetData, setSheetData] = useState([]);
+  const [WeightData, setWeightData] = useState({
+    labels: [],
+    datasets: [],
+  });
+  const _weightSheet = 'weight';
+  //const _habitSheet = 'habits';
+  const _spreadsheetId = '1-dL-edvDj0dXj3jAJob6ShrwlMbOIa9VbhoMz3iSNF8';
+  const _apiKey = 'AIzaSyDVvZYBsSzXWz4QNH_5TzaF9GY-YyXPrOQ';
 
-class GoogleSheetsReader {
-  constructor(sheetId, apiKey) {
-    this.sheetId = sheetId;
-    this.apiKey = apiKey;
-
-    this.sheets = google.sheets({
-      version: 'v4',
-      auth: apiKey,
+  useEffect(() => {
+    loadGoogleApi().then(() => {
+      fetchWeightSheetData();
     });
-  }
+  }, []);
 
-  async render(req, res) {
-    try {
-      const response = await this.sheets.spreadsheets.values.get({
-        spreadsheetId: this.sheetId,
-        range: 'data',
-        key: this.apiKey,
-      });
+  useEffect(() => {
+    fetchWeightData(weightSheetData);
+    }, [weightSheetData]);
 
-      const values = response.data.values;
+  const loadGoogleApi = () => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://apis.google.com/js/api.js';
+      script.onload = () => {
+        gapi.load('client', () => {
+          gapi.client.init({
+            apiKey: _apiKey,
+          }).then(() => {
+            return gapi.client.load('sheets', 'v4');
+          }).then(() => {
+            resolve();
+          }).catch((error) => {
+            reject(error);
+          });
+        });
+      };
+      document.body.appendChild(script);
+    });
+  };
 
-      res.send(`
-        <html>
-          <head>
-            <title>Google Sheets Data</title>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-          </head>
-          <body>
-            <h1>Google Sheets Data</h1>
-            <p>Data will be displayed below:</p>
-            <div id="sheet-data"></div>
-            <script>
-              fetch('/get-sheet-data')
-                .then(response => response.json())
-                .then(data => {
-                  const sheetDataElement = document.getElementById('sheet-data');
-                  data.forEach(row => {
-                    const listItem = document.createElement('p');
-                    listItem.textContent = row.join(', ');
-                    sheetDataElement.appendChild(listItem);
-                  });
+  const fetchWeightSheetData = () => {
+    gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: _spreadsheetId,
+      range: _weightSheet,
+    }).then((response) => {
+      const values = response.result.values;
+      setWeightSheetData(values);
+    }).catch((error) => {
+      console.error('Error fetching sheet data:', error);
+    });
+  };
 
-                  // Load chart data after page load
-                  fetch('/plot-chart')
-                    .then(() => {
-                      // Plot chart using chart.js
-                      const ctx = document.getElementById('line-chart').getContext('2d');
-                      new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                          labels: data.map(row => row[0]),
-                          datasets: [
-                            {
-                              label: 'Weight',
-                              data: data.map(row => row[1]),
-                              borderColor: 'rgba(75, 192, 192, 1)',
-                              borderWidth: 1,
-                              fill: false,
-                            },
-                            {
-                              label: 'Work',
-                              data: data.map(row => row[2]),
-                              borderColor: 'rgba(255, 99, 132, 1)',
-                              borderWidth: 1,
-                              fill: false,
-                            },
-                          ],
-                        },
-                        options: {
-                          scales: {
-                            x: {
-                              type: 'linear',
-                              position: 'bottom',
-                            },
-                          },
-                        },
-                      });
-                    })
-                    .catch(error => console.error('Error plotting chart:', error));
-                })
-                .catch(error => console.error('Error fetching sheet data:', error));
-            </script>
-          </body>
-        </html>
-      `);
-    } catch (error) {
-      console.error('Error rendering home page:', error);
-      res.status(500).send('Internal Server Error');
-    }
-  }
+  const fetchWeightData = (data) => {
+    const labels = weightSheetData.map(row => row[0]);
+    const weightData =weightSheetData.map(row => row[1]);
 
-  async getSheetData(req, res) {
-    try {
-      const response = await this.sheets.spreadsheets.values.get({
-        spreadsheetId: this.sheetId,
-        range: 'data',
-        key: this.apiKey,
-      });
+    const newWeightData = {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Weight',
+            data: weightData,
+            fill: true,
+            backgroundColor: "rgba(75,192,192,0.2)",
+            borderColor: "rgba(75,192,192,1)"
+          },
+        ],
+      };
 
-      const values = response.data.values;
-      res.json(values);
-    } catch (error) {
-      console.error('Error getting sheet data:', error);
-      res.status(500).send('Internal Server Error');
-    }
-  }
+    setWeightData(newWeightData);
+  };
 
-  async plotChart(req, res) {
-    res.send(`
-      <html>
-        <head>
-          <title>Chart Page</title>
-          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        </head>
-        <body>
-          <h1>Line Chart</h1>
-          <canvas id="line-chart" width="800" height="400"></canvas>
-        </body>
-      </html>
-    `);
-  }
+ /*
+  const fetchHabitsData = (data) => {
+    const labels = sheetData.map(row => row[0]);
+    const weightData =sheetData.map(row => row[1]);
+    const workData = sheetData.map(row => row[2]);
 
-}
+    const newHabitsData = {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Weight',
+            data: weightData,
+            fill: true,
+            backgroundColor: "rgba(75,192,192,0.2)",
+            borderColor: "rgba(75,192,192,1)"
+          },
+          {
+            label: 'Work',
+            data: workData,
+            fill: false,
+            borderColor: "#742774"
+          },
+        ],
+      };
 
-module.exports = GoogleSheetsReader;
+    setHabitsData(HabitsData);
+  };
+ */
+  return (
+    <div>
+      <div className="LifeStatsChart">
+        <Line data={WeightData} />
+      </div>
+    </div>
+  );
+};
+
+export default LifeStats;
