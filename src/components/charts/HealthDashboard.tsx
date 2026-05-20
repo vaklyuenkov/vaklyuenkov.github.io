@@ -14,7 +14,7 @@ export function HealthDashboard({ data }: Props) {
       <header>
         <h1 className="text-lg font-semibold tracking-tight text-foreground">Health</h1>
       </header>
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
         <MinimalLineChart title="Weight" subtitle="kg" points={weight} valueLabel="kg" />
         <VolumesMultiLineChart data={volumes} />
       </div>

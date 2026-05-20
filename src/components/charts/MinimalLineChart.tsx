@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { ChartFrame } from "@/components/charts/ChartFrame";
 import { HEALTH_CHART_Y_DOMAIN } from "@/lib/chart-y-domain";
 import type { DatedPoint } from "@/types/charts";
 
@@ -35,37 +36,32 @@ export function MinimalLineChart({ title, subtitle, points, valueLabel }: Minima
   }));
 
   return (
-    <div className="rounded-xl border border-border/80 bg-card/30 p-4 sm:p-5">
-      <div className="mb-4 flex flex-col gap-0.5">
+    <div className="min-w-0 rounded-xl border border-border/80 bg-card/30 p-3 sm:p-5">
+      <div className="mb-3 flex flex-col gap-0.5 sm:mb-4">
         <h2 className="text-sm font-semibold tracking-wide text-foreground">{title}</h2>
         {subtitle ? <p className="text-xs text-muted-foreground">{subtitle}</p> : null}
       </div>
-      <div className="h-[260px] w-full">
-        {data.length === 0 ? (
-          <div className="flex h-full items-center justify-center rounded-lg border border-dashed border-border/70 text-xs text-muted-foreground">
-            No points in series
-          </div>
-        ) : (
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 4, right: 8, left: -8, bottom: 0 }}>
+      <ChartFrame empty={data.length === 0} emptyLabel="No points in series">
+        <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={data} margin={{ top: 4, right: 4, left: -4, bottom: 0 }}>
               <CartesianGrid stroke={GRID} strokeDasharray="4 8" vertical={false} />
               <XAxis
                 type="number"
                 dataKey="t"
                 domain={["dataMin", "dataMax"]}
                 scale="time"
-                tick={{ fill: "hsl(270 10% 62%)", fontSize: 11, fontFamily: "JetBrains Mono" }}
+                tick={{ fill: "hsl(270 10% 62%)", fontSize: 10, fontFamily: "JetBrains Mono" }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(ts) => formatShortDate(new Date(ts).toISOString().slice(0, 10))}
-                minTickGap={28}
+                minTickGap={20}
               />
               <YAxis
                 domain={HEALTH_CHART_Y_DOMAIN}
-                tick={{ fill: "hsl(270 10% 62%)", fontSize: 11, fontFamily: "JetBrains Mono" }}
+                tick={{ fill: "hsl(270 10% 62%)", fontSize: 10, fontFamily: "JetBrains Mono" }}
                 axisLine={false}
                 tickLine={false}
-                width={44}
+                width={32}
               />
               <Tooltip
                 cursor={{ stroke: "hsla(150, 100%, 50%, 0.25)", strokeWidth: 1 }}
@@ -97,8 +93,7 @@ export function MinimalLineChart({ title, subtitle, points, valueLabel }: Minima
               />
             </LineChart>
           </ResponsiveContainer>
-        )}
-      </div>
+      </ChartFrame>
     </div>
   );
 }
