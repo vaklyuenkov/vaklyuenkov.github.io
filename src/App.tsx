@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { TelegramBootstrap } from "@/components/TelegramBootstrap";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppShell } from "@/layouts/AppShell";
 import { AboutPage } from "@/pages/AboutPage";
@@ -8,6 +9,7 @@ import { StatsSectionView } from "@/pages/StatsSectionView";
 export default function App() {
   return (
     <TooltipProvider delayDuration={200}>
+      <TelegramBootstrap />
       <Routes>
         <Route element={<AppShell />}>
           <Route index element={<Navigate to="stats" replace />} />

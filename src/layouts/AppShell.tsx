@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export function AppShell() {
   return (
-    <div className="flex min-h-dvh flex-col bg-background">
+    <div className="flex min-h-dvh min-h-[var(--tg-viewport-height,100dvh)] flex-col bg-background pb-[env(safe-area-inset-bottom,0px)]">
       <header className="sticky top-0 z-40 border-b border-border/80 bg-background/95 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
           <span className="font-mono text-sm tracking-tight text-foreground/90">

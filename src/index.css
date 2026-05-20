@@ -22,4 +22,11 @@
   body {
     @apply bg-background text-foreground antialiased;
   }
+
+  html.telegram-webapp,
+  body.telegram-webapp {
+    min-height: 100dvh;
+    min-height: var(--tg-viewport-height, 100dvh);
+    overflow-x: hidden;
+  }
 }
