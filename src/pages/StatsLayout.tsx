@@ -22,7 +22,7 @@ export function StatsLayout() {
           className={cn(
             "flex items-center border-border/60",
             collapsed
-              ? "shrink-0 border-0 p-0 sm:w-full sm:border-b sm:p-1"
+              ? "shrink-0 border-0 p-0 sm:flex sm:w-full sm:justify-center sm:border-b sm:p-1"
               : "w-full justify-between gap-1 border-b p-2",
           )}
         >
@@ -56,7 +56,7 @@ export function StatsLayout() {
                 cn(
                   "flex items-center rounded-lg border border-transparent text-sm font-medium transition-colors",
                   collapsed
-                    ? "flex-1 justify-center px-0 py-2 sm:flex-none sm:py-2"
+                    ? "flex-1 justify-center px-0 py-2 sm:mx-auto sm:size-9 sm:flex-none sm:shrink-0 sm:p-0"
                     : "gap-3 px-3 py-2.5 sm:py-3",
                   isActive
                     ? "border-border bg-muted/50 text-accent"
